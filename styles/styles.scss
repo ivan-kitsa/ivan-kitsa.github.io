@@ -1,0 +1,23 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Roboto Mono', monospace;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.back-black {
+  background: black;
+}
+
+@import "glitch";
