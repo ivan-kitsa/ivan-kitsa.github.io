@@ -139,11 +139,11 @@ body {
     background: #ffffff;
     overflow: hidden; }
     .sphere-wrapper .sphere .main-color {
-      width: 65%;
-      height: 65%;
+      width: 66%;
+      height: 66%;
       position: absolute;
-      left: 48%;
-      top: 48%;
+      left: 55%;
+      top: 55%;
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
@@ -160,14 +160,15 @@ body {
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       background: #537080;
-      -webkit-box-shadow: 0 0 3.6rem 4.8rem #537080;
-      box-shadow: 0 0 3.6rem 4.8rem #537080; }
+      -webkit-box-shadow: 0 0 4.2rem 4.8rem #537080;
+      box-shadow: 0 0 4.2rem 4.8rem #537080;
+      opacity: .9; }
     .sphere-wrapper .sphere .high-light {
-      width: 10%;
-      height: 10%;
+      width: 14%;
+      height: 14%;
       position: absolute;
-      left: 40%;
-      top: 40%;
+      left: 44%;
+      top: 44%;
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
