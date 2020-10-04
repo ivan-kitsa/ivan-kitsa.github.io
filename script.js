@@ -39,14 +39,14 @@ $(document).ready(function() {
       let y = pageY - pos.top;
 
         box.css({
-        'left' : (x - 5) + 'px',
-        'top' : (y - 8) + 'px',
+        'left' : (x - 0) + 'px',
+        'top' : (y - 0) + 'px',
         'opacity' : '1',
         // 'transition' : '0.075s ease-in-out'
       });
       cursor.css({
           'transform' : 'scale(1.4)',
-          'border' : '4px solid ',
+          'border' : '3px solid ',
           'opacity' : '0.375'
       });
       dot.css({

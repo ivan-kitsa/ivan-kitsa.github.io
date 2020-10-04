@@ -66,6 +66,7 @@ body{
   background: rgba(0,0,0,0.05);
   box-shadow: inset 0 0 8px 0 rgba(0,0,0,0.2);
   border: 1px solid fade-out(#fff, .96);
+  transition: .2s ease-out .1s;
 
   &:hover {
     background: rgba(0,0,0,0.08);
