@@ -5,9 +5,126 @@
     <meta name='viewport'
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <title>xxx</title>
+    <link rel='stylesheet' href='./styles/style.css'>
+    <title>Grider</title>
 </head>
 <body>
-  hello world
+    <div class='grid-wrapper' id='grid-wrapper'></div>
+    <div class='popup'>
+        <label for='rows'>
+            <span>Set rows count:</span>
+            <input type='text'
+                   id='rows'
+                   oninput='onInput(event)'
+                   onblur='(onBlur(event))'
+                   onclick='this.focus();this.select()'
+                   value='13'>
+        </label>
+        <label for='columns'>
+            <span>Set columns count:</span>
+            <input type='text'
+                   id='columns'
+                   oninput='onInput(event)'
+                   onblur='(onBlur(event))'
+                   onclick='this.focus();this.select()'
+                   value='13'>
+        </label>
+    </div>
+    <script>
+        const colors = ['#34A997', '#AEE9CD', '#F2EEA7', '#FD8853', '#ACE1FF']
+        const grid = document.getElementById('grid-wrapper')
+        const gridParams = {
+            rows: '13',
+            columns: '13'
+        }
+
+        gridGenerator(grid, gridParams)
+
+        function onBlur(e) {
+            const input = e.target
+
+            if (isNaN(parseInt(e.target.value))) {
+                gridParams[input.id] = '1'
+                input.value = '1'
+                gridGenerator(grid, gridParams)
+            }
+        }
+
+        function onInput(e) {
+            const input = e.target
+            const count = input.value
+            let prevCount = gridParams[input.id]
+
+            if (count === '0' || isNaN(count)) {
+                gridParams[input.id] = '1'
+                input.value = '1'
+                gridGenerator(grid, gridParams)
+                return
+            }
+
+            if (+count > 50) {
+                gridParams[input.id] = prevCount
+                input.value = prevCount
+                gridGenerator(grid, gridParams)
+                return
+            }
+
+            gridParams[input.id] = count
+            input.value = count
+            gridGenerator(grid, gridParams)
+        }
+
+
+        function gridGenerator(wrapper, gridParams) {
+            const rows = gridParams.rows
+            const columns = gridParams.columns
+
+            if (!wrapper) {
+                return
+            }
+
+            let rowsStyle = 'grid-template-rows:'
+            let columnsStyle = 'grid-template-columns:'
+
+            for (let i = 0; i < rows; i++) {
+                rowsStyle += ' 1fr'
+            }
+
+            for (let i = 0; i < columns; i++) {
+                columnsStyle += ' 1fr'
+            }
+
+            wrapper.style.cssText = `${rowsStyle}; ${columnsStyle};`
+            wrapper.innerHTML = null
+
+            for (let i = 0; i < (columns * rows); i++) {
+                let div = document.createElement('div')
+                div.className = 'grid-box'
+                div.onmousedown = (columns * rows > 1) ? destroyBox : null
+                wrapper.append(div)
+            }
+        }
+
+        function destroyBox(e) {
+            e.target.style.cssText = `
+                background-color: ${colors[getRandomInt(5)]};
+                pointer-events: none;`
+
+            setTimeout(() => {
+                e.target.style.cssText = `
+                    transform:
+                        translateY(calc(100vh + 100%))
+                        translateX(${getRandomInt(-20) + getRandomInt(40)}vw);
+                    transition: 1s ease-in 0s;
+                    pointer-events: none;`
+            }, 100)
+        }
+
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+    </script>
 </body>
 </html>
